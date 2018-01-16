@@ -1,0 +1,16 @@
+--- a/memory/Allocator.c
++++ b/memory/Allocator.c
+@@ -787,8 +787,13 @@ struct Allocator* Allocator_new(unsigned
+                 .lineNum = lineNum,
+             },
+             #ifdef Allocator_USE_CANARIES
++            #  if !TARGET_64BIT
++            .canary = (unsigned long) Constant_rand32(),
++            .nextCanary = (unsigned long) Constant_rand32(),
++            #  else
+             .canary = (unsigned long) Constant_rand64(),
+             .nextCanary = (unsigned long) Constant_rand64(),
++            #  endif
+             #endif
+         }
+     };
