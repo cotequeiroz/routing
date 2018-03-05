@@ -83,7 +83,7 @@ define Build/Compile
 	CC="$(TARGET_CC)" \
 	AR="$(TARGET_AR)" \
 	RANLIB="$(TARGET_RANLIB)" \
-	CFLAGS="$(TARGET_CFLAGS)" \
+	CFLAGS="$(patsubst -D_FORTIFY_SOURCE=%,,$(TARGET_CFLAGS))" \
 	LDFLAGS="$(TARGET_LDFLAGS)" \
 	SYSTEM="linux" \
 	TARGET_ARCH="$(CONFIG_ARCH)" \
