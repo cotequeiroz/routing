@@ -31,6 +31,8 @@ PKG_LICENSE_FILES:=LICENSE
 
 include $(INCLUDE_DIR)/package.mk
 
+PKG_BUILD_DEPENDS:=node/host
+
 define Package/cjdns
 	SECTION:=net
 	CATEGORY:=Network
