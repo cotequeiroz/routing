@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=oonf-dlep-proxy
-PKG_RELEASE:=1
+PKG_RELEASE:=1# cotequeiroz
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/OLSR/OONF.git
@@ -49,7 +49,10 @@ define Build/Install
 	$(INSTALL_BIN) -D $(PKG_BUILD_DIR)/$(MAKE_PATH)/dlep_radio_static $(PKG_INSTALL_DIR)/usr/sbin/dlep_proxy;
 endef
 
-TARGET_CFLAGS += -I$(STAGING_DIR)/usr/include -I${STAGING_DIR}/usr/include/libnl-tiny
+TARGET_CFLAGS += \
+	-I$(STAGING_DIR)/usr/include \
+	-I${STAGING_DIR}/usr/include/libnl-tiny \
+	-Wno-error=int-conversion
 
 define Package/oonf-dlep-proxy/install
 	$(INSTALL_BIN)  -D $(PKG_BUILD_DIR)/dlep_radio_static $(1)/usr/sbin/dlep_proxy
