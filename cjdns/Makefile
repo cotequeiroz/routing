@@ -18,7 +18,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cjdns
 PKG_VERSION:=21.1
-PKG_RELEASE:=6
+PKG_RELEASE:=6# cotequeiroz
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/cjdelisle/cjdns/tar.gz/$(PKG_NAME)-v$(PKG_VERSION)?
@@ -40,7 +40,8 @@ define Package/cjdns
 	TITLE:=Encrypted near-zero-conf mesh routing protocol
 	URL:=https://github.com/cjdelisle/cjdns
 	DEPENDS:=@!arc @IPV6 +kmod-tun +libnl-tiny +libpthread +librt \
-		+libuci-lua +lua-bencode +dkjson +luasocket +lua-sha2
+		+libuci-lua +lua-bencode +dkjson +luasocket +lua-sha2 \
+		@BROKEN
 endef
 
 define Package/cjdns/description
@@ -56,7 +57,7 @@ define Package/cjdns-tests
 	SUBMENU:=Routing and Redirection
 	TITLE:=cjdns test cases
 	URL:=https://github.com/cjdelisle/cjdns
-	DEPENDS:=+libpthread +librt @!arc
+	DEPENDS:=+libpthread +librt @!arc @BROKEN
 endef
 
 define Package/cjdns-test/description
