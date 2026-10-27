@@ -7,9 +7,18 @@
 -import collections
 +try:
 +  # Python 3.10
-+  from six.moves import collections_abc as collections
++  from collections.abc import MutableSet
 +except ImportError:
-+  import collections
++  from collections import MutableSet
  import errno
  import filecmp
  import os.path
+@@ -494,7 +498,7 @@ def uniquer(seq, idfun=None):
+ 
+ 
+ # Based on http://code.activestate.com/recipes/576694/.
+-class OrderedSet(collections.MutableSet):
++class OrderedSet(MutableSet):
+   def __init__(self, iterable=None):
+     self.end = end = []
+     end += [None, end, end]         # sentinel node for doubly linked list
